@@ -1,0 +1,54 @@
+.review-title a {
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.review-user-container {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-title img {
+  width: 40px;
+  height: 40px;
+}
+
+.review-user {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.review-user p {
+  padding: 0 10px;
+}
+
+.review-user-container img {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+}
+
+.review-nota {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.review-nota #star {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: none;
+  padding: 0 5px;
+}
+
+.review-text {
+  padding: 0 50px;
+}

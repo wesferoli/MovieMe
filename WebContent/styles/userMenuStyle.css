@@ -1,0 +1,191 @@
+.user-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.user-container .left-menu {
+  position: relative;
+  background-color: #3B4651;
+  padding: 90px 0px 300px 28%;
+  height: 100%;
+}
+
+.user-container .left-menu a {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.user-container .menu {
+  display: flexbox;
+  margin: 90px 10%;
+}
+
+.user-container .left-menu #reviews-button {
+  color: #F8D98B;
+}
+
+.not-active {
+  display: none;
+}
+
+.title {
+	color: #F8D98B;
+}
+
+.user-container .menu-header {
+  border-radius: 5px 5px 0px 0px;
+  background-color: #F8D98B;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-items: center;
+}
+
+.user-container .menu-header p {
+  font-weight: bold;
+  margin: 0px 0px 0px 10px;
+}
+
+.user-container .menu-content {
+  background-color: #3B4651;
+  border-radius: 0px 0px 5px 5px;
+  
+  padding: 15px 0px;
+  height: 90%;
+}
+
+.user-container .menu-content a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.user-container .menu-content .review-list-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  margin: 5px 10px;
+  padding: 5px 5px;
+  border: 1px solid #F8D98B;
+  border-radius: 5px;
+  box-shadow: -2px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.user-container .menu-content .categorias-list-container {
+  display: grid;
+  grid-template-columns: 5fr 0.5fr;
+  margin: 5px 10px;
+  padding: 5px 0 5px 15px;
+  border: 1px solid #F8D98B;
+  border-radius: 5px;
+  box-shadow: -2px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.user-container .menu-content .movies-list-container {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 0.4fr;
+  margin: 5px 10px;
+  padding: 5px 0 5px 15px;
+  border: 1px solid #F8D98B;
+  border-radius: 5px;
+  box-shadow: -2px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.user-container .menu-content .review-list-container li {
+  list-style: none;
+  display: block;
+  margin: 0px 0px 0px 10px;
+}
+
+.user-container .menu-content ul li img {
+  height: 15px;
+  width: 15px;
+}
+
+/* User Profile Data Form */
+.user-container .user-menu-header {
+  border-radius: 5px 5px 0px 0px;
+  background-color: #F8D98B;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.user-container .user-menu-header p {
+  font-weight: bold;
+  margin: 0px auto;
+  font-size: 20px;
+}
+
+.user-container .menu-content .user-form {
+  display: block;
+  padding: 0px 100px;
+}
+
+.user-container .menu-content .user-form label {
+  font-weight: bold;
+  color: #F8D98B;
+}
+
+.user-container .menu-content .user-form .button {
+  display: flex;
+}
+
+.user-container .menu-content .user-form #btnSendFrmUser, .user-container .menu-content .user-form button[name="edit"] {
+  width: 170px;
+  margin: 20px auto;
+  padding: 5px 0px;
+  
+  background: radial-gradient(50% 1179.59% at 50% 50%, #F8D98B 10.42%, rgba(248, 217, 139, 0.5) 100%);
+  border: 1px solid #222229;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+/* Lista de Usuários */
+.user-container .menu-content .user-list-container {
+  display: grid;
+  grid-template-columns: 4fr 4fr 1fr;
+  margin: 5px 10px;
+  padding: 5px 15px;
+  border: 1px solid #F8D98B;
+  border-radius: 5px;
+  box-shadow: -2px 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.user-container .menu-content .user-list-container p, .categorias-list-container p, .movies-list-container p {
+  color: #FFFFFF;
+  display: flex;
+  margin: auto 0px;
+}
+
+.user-container .menu-content .user-list-container .user-buttons img, .categorias-list-container .categorias-buttons img, .movies-list-container .movies-buttons img {
+  height: 25px;
+  width: 25px;
+}
+
+#delete-btn, #edit-btn, #btnDeleteMovie, #btnDeleteReview {
+	background-color: #F8D98B;
+	border: 1px solid #000000;
+}
+
+/* Form Troca de senha */
+.user-container .menu-content .user-form {
+  margin-top: 50px;
+}
+
+.user-container .menu-content .user-form #btnSendFrmPasswordChange {
+  width: 170px;
+  margin: 20px auto;
+  padding: 5px 0px;
+  
+  background: radial-gradient(50% 1179.59% at 50% 50%, #F8D98B 10.42%, rgba(248, 217, 139, 0.5) 100%);
+  border: 1px solid #222229;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+.menu-content #frmPasswordChange {
+  margin: 50px 40px 0px 40px;
+}

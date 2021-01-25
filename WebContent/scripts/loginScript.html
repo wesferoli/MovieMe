@@ -1,0 +1,20 @@
+<script type="text/javascript">
+
+	$(document).ready( 
+	    function() {
+	   	    $("#btnSendFrmLogin").click(
+		        function() {
+		  	        var formData = $("#frmLogin").serialize();
+			        $.post( "../models/loginValidation.jsp", formData, function( data, status  ) {
+			            if ( data.login == "true" ){
+			                window.location.href = "landingPage.jsp";
+			      		}else{
+				    		$("#msgLogin").html("Usuário ou senha inválido(s)!");
+			      		}
+			    	}, "json");
+		      	}
+		    );
+	    } 
+	);
+
+</script>

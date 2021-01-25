@@ -1,0 +1,16 @@
+<script type="text/javascript">
+
+	$(document).ready( 
+		function() {
+			$("#btnSendFrmCadastro").click(
+				function() {
+					var formData = $("#frmCadastro").serialize();
+					$.post( "../models/enviarEmail.jsp", formData, function( data, status ) {
+						$("#msgCadastro").html(data);
+					});
+				}		
+			);
+		} 
+	);
+	
+</script>

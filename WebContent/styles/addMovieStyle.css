@@ -1,0 +1,71 @@
+.add-movie-container, .add-categoria-container {
+  width: 630px;
+
+  margin: 80px auto;
+  background-color: #3B4651;
+  border-radius: 5px;
+}
+
+.add-movie-header, .add-categoria-header {
+  display: inline-block;
+  background-color: #F8D98B;
+  height: 55px;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.add-movie-header h3, .add-categoria-header h3 {
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  padding: 10px 0px;
+}
+
+#frmAddMovie, #frmAddCategoria {
+  display: grid;
+  margin: 60px 100px;
+  align-items: center;
+}
+
+#frmAddMovie label, #frmAddCategoria label {
+  color: #F8D98B;
+  font-weight: bold;
+  margin-bottom: 3px;
+  padding-left: 10px;
+}
+
+#frmAddMovie input, #frmAddMovie select, #frmAddMovie textarea, #frmAddCategoria input {
+  display: block;
+  border-radius: 50px;
+  border: none;
+  width: 100%;
+  outline: none;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+#frmAddMovie textarea, #frmAddMovie input[type="file"] {
+  border-radius: 5px;
+}
+
+::-webkit-input-placeholder {
+  color: #B6B6B6;
+}
+
+#frmAddMovie #btnSendFrmAddMovie, #frmAddCategoria #btnSendFrmAddCategoria {
+  display: block;
+  width: 40%;
+  margin: 20px auto 50px auto;
+  padding: auto;
+  
+  background: radial-gradient(50% 1179.59% at 50% 50%, #F8D98B 10.42%, rgba(248, 217, 139, 0.5) 100%);
+  border: 1px solid #222229;
+  border-radius: 50px;
+}
+
+#frmAddMovie #msgAddMovie, #frmAddCategoria #msgAddCategoria {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: -1px 1px 5px #000000;
+}

@@ -1,0 +1,88 @@
+.login-container, .cadastro-container, .alterar-senha-container, .edit-user-container {
+  width: 630px;
+
+  margin: 80px auto;
+  background-color: #3B4651;
+  border-radius: 5px;
+}
+
+.login-header, .cadastro-header, .alterar-senha-header, .edit-user-header {
+  display: inline-block;
+  background-color: #F8D98B;
+  height: 55px;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.login-header h3, .cadastro-header h3, .alterar-senha-header h3, .edit-user-header h3 {
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  padding: 10px 0px;
+}
+
+#frmLogin, .frmLogin, #frmCadastro, .frmCadastro, #frmAlterarSenha, .frmAlterarSenha, #frmUserEdit, .frmUserEdit {
+  display: grid;
+  margin: 60px 150px;
+  align-items: center;
+}
+
+#frmLogin label, #frmCadastro label, #frmAlterarSenha label, #frmUserEdit label {
+  color: #F8D98B;
+  font-weight: bold;
+  margin-bottom: 3px;
+  padding-left: 10px;
+}
+
+#frmLogin input, #frmCadastro input, #frmAlterarSenha input, #frmUserEdit input, #frmUserEdit select {
+  border-radius: 50px;
+  border: none;
+  width: 100%;
+  outline: none;
+  padding: 5px 10px;
+}
+
+::-webkit-input-placeholder {
+  color: #B6B6B6;
+}
+
+#frmLogin .email-field, #frmCadastro .email-field, #frmAlterarSenha .new-pass-field, #frmUserEdit .email-field, #frmUserEdit .nivel-field {
+  margin-bottom: 20px;
+}
+
+#frmLogin .pass-field, #frmCadastro .name-field, #frmAlterarSenha .conf-pass-field, #frmUserEdit .name-field {
+  margin-bottom: 20px;
+}
+
+#frmLogin .pass-recovery {
+  display: flex;
+  justify-content: center;
+}
+
+#frmLogin p {
+  align-items: center;
+  margin: 0px;
+}
+
+#frmLogin .pass-recovery a {
+  text-decoration: none;
+  color: #F8D98B;
+}
+
+#frmLogin #btnSendFrmLogin, #frmCadastro #btnSendFrmCadastro, #frmAlterarSenha #btnSendFrmAlterarSenha, #frmUserEdit #btnSendFrmUserEdit {
+  width: 170px;
+  margin: 35px auto 35px auto;
+  
+  background: radial-gradient(50% 1179.59% at 50% 50%, #F8D98B 10.42%, rgba(248, 217, 139, 0.5) 100%);
+  border: 1px solid #222229;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+.login-container #msgLogin, .cadastro-container #msgCadastro, .menu-content #msgUserMenu, .menu-content #msgPasswordChange, #msgUserEdit, #msgCategoriasMenu, #msgMovieMenu {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  text-shadow: -1px 1px 5px #000000;
+}

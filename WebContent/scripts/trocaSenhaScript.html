@@ -1,0 +1,16 @@
+<script type="text/javascript">
+
+    $(document).ready( 
+		function() {
+			$("#btnSendFrmPasswordChange").click(
+				function() {
+					var formData = $("#frmPasswordChange").serialize();
+					$.post( "../models/trocaSenha.jsp", formData, function( data, status ) {
+						$("#msgPasswordChange").html(data);
+					});
+				}		
+			);
+		} 
+	);
+    
+</script>
