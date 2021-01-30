@@ -18,7 +18,7 @@
 	$(document).ready(
 		function() {
 
-			if (reviewUserId != userLogin && userLoginNivel == 1) {
+			if (reviewUserId != userLogin) {
 				document.getElementById('reviewButtons').style.display = 'none';
 			}
 		}	

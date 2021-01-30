@@ -1,130 +1,194 @@
-DROP DATABASE lojinha;
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 30-Jan-2021 às 01:01
+-- Versão do servidor: 10.4.14-MariaDB
+-- versão do PHP: 7.4.10
 
-CREATE DATABASE lojinha CHARSET utf8;
-
-USE lojinha;
-
-
-CREATE TABLE institucional (
-	idInstituicao	int	 NOT NULL AUTO_INCREMENT,
-	nome		varchar(50) DEFAULT NULL,
-	cpf_cnpj	varchar(14) DEFAULT NULL UNIQUE,
-	tipoPessoa 	char(1) DEFAULT 'F' COMMENT '{ ''F'' , ''J'' }',
-	endereco	varchar(50) DEFAULT NULL,
-	bairro		varchar(30) DEFAULT NULL,
-	cidade		varchar(50) DEFAULT NULL,
-	uf		varchar(2) DEFAULT NULL,
-	cep		varchar(9) DEFAULT NULL,
-	telefone	varchar(15) DEFAULT NULL,
-	email		varchar(100) DEFAULT NULL UNIQUE,
-	logo		varchar(255) DEFAULT NULL,
-	PRIMARY KEY	(idInstituicao)
-);
-
-CREATE TABLE nivelUsuarios (
-	idNivelUsuario	int	 NOT NULL AUTO_INCREMENT,
-	nivel		varchar(20) DEFAULT NULL COMMENT '{''Cliente '', ''Funcionário'', ''Caixa '', ''Financeiro '', ''Gerente '', ''Diretor'', ''Administrador''}',
-	PRIMARY KEY	(idNivelUsuario)
-);
-
-CREATE TABLE usuarios (
-	idUsuario	int	 NOT NULL AUTO_INCREMENT,
-	email		varchar(100) DEFAULT NULL UNIQUE,
-	senha		varchar(64) NOT NULL,
-	idNivelUsuario	int	 DEFAULT '1',
-	nome		varchar(50) DEFAULT NULL,
-	cpf		varchar(14) DEFAULT NULL UNIQUE,
-	endereco	varchar(50) DEFAULT NULL,
-	bairro		varchar(30) DEFAULT NULL,
-	cidade		varchar(50) DEFAULT NULL,
-	uf		varchar(2) DEFAULT NULL,
-	cep		varchar(9) DEFAULT NULL,
-	telefone	varchar(15) DEFAULT NULL,
-	foto		varchar(255) DEFAULT NULL,
-	ativo		varchar(1) DEFAULT 'N',
-	PRIMARY KEY	(idUsuario)
-);
-
-CREATE TABLE categorias (
-	idCategoria	int	 NOT NULL AUTO_INCREMENT,
-	descricao	varchar(30) DEFAULT NULL,
-	PRIMARY KEY	(idCategoria)
-);
-
-CREATE TABLE produtos (
-	idProduto	int	 NOT NULL AUTO_INCREMENT,
-	fabricante	varchar(100) DEFAULT NULL,
-	nome		varchar(100) DEFAULT NULL,
-	marca		varchar(100) DEFAULT NULL,
-	modelo		varchar(100) DEFAULT NULL,
-	idCategoria	int	 DEFAULT NULL,
-	descricao	text,
-	unidadeMedida	varchar(15) DEFAULT NULL,
-	largura 	decimal(10,3) DEFAULT NULL COMMENT '9999999.999',
-	altura 		decimal(10,3) DEFAULT NULL COMMENT '9999999.999',
-	profundidade 	decimal(10,3) DEFAULT NULL COMMENT '9999999.999',
-	peso 		decimal(10,3) DEFAULT NULL COMMENT '9999999.999',
-	cor		varchar(7) DEFAULT NULL,
-	dtFabricacao	varchar(45) DEFAULT NULL,
-	PRIMARY KEY	(idProduto),
-	FOREIGN KEY (idCategoria) REFERENCES categorias (idCategoria)
-);
-
-CREATE TABLE estoque (
-	idEstoque	int	 NOT NULL AUTO_INCREMENT,
-	idProduto	int	 DEFAULT NULL,
-	dtEntrada	date	 DEFAULT NULL COMMENT 'YYYY/MM/DD',
-	quantidade	int	 DEFAULT '0',
-	dtFabricacao	date	 DEFAULT NULL COMMENT 'YYYY/MM/DD',
-	dtVencimento	date	 DEFAULT NULL COMMENT 'YYYY/MM/DD',
-	nfCompra	text,
-	precoCompra 	decimal(15,2) DEFAULT NULL,
-	icmsCompra 	decimal(15,2) DEFAULT NULL,
-	precoVenda 	decimal(15,2) DEFAULT NULL,
-	qtdVendida	int	 DEFAULT NULL,
-	qtdOcorrencia	int	 DEFAULT NULL,
-	ocorrencia	varchar(1024) DEFAULT NULL,
-	PRIMARY KEY	(idEstoque),
-	FOREIGN KEY (idProduto) REFERENCES produtos (idProduto)
-);
-
-CREATE TABLE pedidos (
-	idPedido	int	 NOT NULL AUTO_INCREMENT,
-	idUsuario	int	 DEFAULT NULL,
-	dtPedido	datetime	DEFAULT NULL,
-	dtPagamento 	datetime DEFAULT NULL,
-	dtNotaFiscal 	datetime DEFAULT NULL,
-	notaFiscal	text,
-	dtEnvio 	datetime DEFAULT NULL,
-	dtRecebimento 	datetime DEFAULT NULL,
-	tipoFrete	int	 DEFAULT '0' COMMENT '{ { 0, Retirada }, { 1, PAC }, { 2, SEDEX }, { 3, MOTOBOY }, { 4, TRANSPORTADORA} }',
-	rastreioFrete	varchar(255) DEFAULT NULL,
-	entregaendereco	varchar(50) DEFAULT NULL,
-	entregaNumero	varchar(10) DEFAULT NULL,
-	entregaCompl	varchar(50) DEFAULT NULL,
-	entregaBairro	varchar(30) DEFAULT NULL,
-	entregaCidade	varchar(50) DEFAULT NULL,
-	entregaUF	varchar(2) DEFAULT NULL,
-	entregaCEP	varchar(9) DEFAULT NULL,
-	entregaTelefone	varchar(15) DEFAULT NULL,
-	entregaRefer	varchar(255) DEFAULT NULL,
-	valorTotal 	decimal(12,2) DEFAULT NULL,
-	qtdItems	int	 DEFAULT NULL,
-	dtDevolucao	datetime	DEFAULT NULL,
-	motivoDevolucao	text,
-	PRIMARY KEY	(idPedido),
-	FOREIGN KEY 	(idUsuario) REFERENCES usuarios (idUsuario)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE itemsPedido (
-	idItemPedido	int	 NOT NULL AUTO_INCREMENT,
-	ordem		int	 DEFAULT NULL,
-	idPedido	int	 DEFAULT NULL,
-	idEstoque	int	 DEFAULT NULL,
-	qtdItem	int	 DEFAULT NULL,
-	dtDevolucao 	datetime DEFAULT NULL,
-	motivoDevolucao	text,
-	PRIMARY KEY	(idItemPedido),
-	FOREIGN KEY 	(idEstoque) REFERENCES estoque (idEstoque)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `db_movieme`
+--
+CREATE DATABASE IF NOT EXISTS `db_movieme` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_movieme`;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `idCategoria` int(11) NOT NULL,
+  `categoria` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `filmes`
+--
+
+CREATE TABLE `filmes` (
+  `idFilme` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `idCategoria` int(11) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `ano` int(4) DEFAULT NULL,
+  `atores` text DEFAULT NULL,
+  `diretores` text DEFAULT NULL,
+  `poster` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `nivel_usuarios`
+--
+
+CREATE TABLE `nivel_usuarios` (
+  `idNivelUsuario` int(11) NOT NULL,
+  `nivel` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `idReview` int(11) NOT NULL,
+  `titulo` varchar(60) DEFAULT NULL,
+  `review` text DEFAULT NULL,
+  `nota` float DEFAULT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
+  `idFilme` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `idNivelUsuario` int(11) DEFAULT NULL,
+  `senha` varchar(32) DEFAULT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `foto` varchar(45) DEFAULT NULL,
+  `ativo` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Índices para tabela `filmes`
+--
+ALTER TABLE `filmes`
+  ADD PRIMARY KEY (`idFilme`),
+  ADD KEY `fk_filmes_idCategoria` (`idCategoria`);
+
+--
+-- Índices para tabela `nivel_usuarios`
+--
+ALTER TABLE `nivel_usuarios`
+  ADD PRIMARY KEY (`idNivelUsuario`);
+
+--
+-- Índices para tabela `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`idReview`),
+  ADD KEY `fk_reviews_idUsuario` (`idUsuario`),
+  ADD KEY `fk_reviews_idFilme` (`idFilme`);
+
+--
+-- Índices para tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD KEY `fk_usuarios_idNivelUsuario` (`idNivelUsuario`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `filmes`
+--
+ALTER TABLE `filmes`
+  MODIFY `idFilme` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `nivel_usuarios`
+--
+ALTER TABLE `nivel_usuarios`
+  MODIFY `idNivelUsuario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `idReview` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `filmes`
+--
+ALTER TABLE `filmes`
+  ADD CONSTRAINT `fk_filmes_idCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`idCategoria`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `fk_reviews_idFilme` FOREIGN KEY (`idFilme`) REFERENCES `filmes` (`idFilme`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_reviews_idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_idNivelUsuario` FOREIGN KEY (`idNivelUsuario`) REFERENCES `nivel_usuarios` (`idNivelUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
